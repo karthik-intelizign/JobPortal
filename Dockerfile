@@ -5,11 +5,10 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /JobPortal
 
-COPY requirements.txt /JobPortal/
-RUN pip install --upgarde pip
-RUN pip install -r requirements.txt
+RUN pip install --upgrade pip
+RUN python -m pip install Django
 
-COPY . /JobPortal/
+COPY ./JobPortal/ /JobPortal/
 
 EXPOSE 8000
 
