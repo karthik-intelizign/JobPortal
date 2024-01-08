@@ -2,6 +2,24 @@ pipeline{
     agent any
     
     stages{
+        stage('who am I'){
+            steps{
+                echo "========Who AM I========"
+                sh '''
+                whoami
+                '''
+            }
+            post{
+                success{
+                    echo "========Git Clone executed successfully========"
+                }
+                failure{
+                    echo "========Git Clone execution failed========"
+                }
+            }
+        }
+
+
         stage('git clone'){
             steps{
                 echo "========Git Clone========"
