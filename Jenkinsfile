@@ -44,7 +44,7 @@ pipeline{
                 echo "========building docker image==========="
                 sh '''
                    cd JobPortal
-                   sudo docker build -t job-portal .
+                   sudo docker build -t karthik759/job-portal:latest .
 
                 '''
             }
@@ -58,13 +58,35 @@ pipeline{
             }
         }
 
+        stage('Push image to Docker hub'){
+            steps{
+                script {
+                    withCredentials([usernamePassword(credentialsId: 'DOCKER_HUB', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')])
+                    {
+                        sh "docker login -n $DCOKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
+                        sh "docker push karthik759/job-portal:latest"
+                    }
+
+                }
+            }
+            post{
+                success{
+                    echo "========Docker push executed successfully========"
+                }
+                failure{
+                    echo "========Docker push execution failed========"
+                }
+            }
+        }
+
         stage('docker run'){
             steps{
                 echo "========executing docker image==========="
                 sh '''
                    sudo docker run -p 8000:8000 job-portal
+                   sleep 20
                    echo "============Final Out======================="
-                   curl http://localhoast:8000/polls/
+                   curl http://localhost:8000/polls/
                    echo "============Final Out======================="
 
                 '''
