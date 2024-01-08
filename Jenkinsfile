@@ -5,6 +5,7 @@ pipeline{
         stage('git clone'){
             steps{
                 echo "========Git Clone========"
+                rm -rf JobPortal
                 sh "git clone https://github.com/karthik-intelizign/JobPortal.git"
             }
             post{
