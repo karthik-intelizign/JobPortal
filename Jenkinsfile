@@ -63,7 +63,7 @@ pipeline{
                 script {
                     withCredentials([usernamePassword(credentialsId: 'DOCKER_HUB', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')])
                     {
-                        sh "docker login -n $DCOKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
+                        sh "docker login -u $DCOKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
                         sh "docker push karthik759/job-portal:latest"
                     }
 
