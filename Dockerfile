@@ -9,7 +9,9 @@ WORKDIR /JobPortal
 RUN pip install --upgrade pip
 RUN python -m pip install Django
 
-COPY ./JobPortal/ /JobPortal/
+COPY . /JobPortal/
+
+RUN rm -rf Dockerfile
 
 EXPOSE 8000
 
