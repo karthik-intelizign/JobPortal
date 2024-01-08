@@ -16,9 +16,7 @@ pipeline{
                 }
             }
         }
-    }
 
-    stages{
         stage('docker build'){
             steps{
                 echo "========building docker image==========="
@@ -37,9 +35,7 @@ pipeline{
                 }
             }
         }
-    }
 
-    stages{
         stage('docker run'){
             steps{
                 echo "========executing docker image==========="
@@ -61,7 +57,7 @@ pipeline{
             }
         }
     }
-    
+
     post{
         always{
             echo "========always========"
