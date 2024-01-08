@@ -6,12 +6,7 @@ pipeline{
             steps{
                 echo "========Git Clone========"
                 sh '''
-                ls -ltr
-                echo "========ls -ltr========"
-                ls -ld 
-                echo "========ls -ltr========"
-                pwd
-                df -h
+                rm -rf JobPortal
                 '''
 
                 sh "git clone https://github.com/karthik-intelizign/JobPortal.git"
