@@ -26,7 +26,7 @@ pipeline{
                 echo "========building docker image==========="
                 sh '''
                    cd JobPortal
-                   sudo docker build -t job-portal .
+                   docker build -t job-portal .
 
                 '''
             }
@@ -44,7 +44,7 @@ pipeline{
             steps{
                 echo "========executing docker image==========="
                 sh '''
-                   sudo docker run -p 8000:8000 job-portal
+                   docker run -p 8000:8000 job-portal
                    echo "============Final Out======================="
                    curl http://localhoast:8000/polls/
                    echo "============Final Out======================="
