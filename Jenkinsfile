@@ -5,10 +5,12 @@ pipeline{
         stage('git clone'){
             steps{
                 echo "========Git Clone========"
+                sh '''
                 ls -ltr
                 echo "========ls -ltr========"
                 ls -ld 
                 df -h
+                '''
 
                 sh "git clone https://github.com/karthik-intelizign/JobPortal.git"
             }
