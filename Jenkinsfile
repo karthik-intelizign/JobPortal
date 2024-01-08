@@ -9,6 +9,8 @@ pipeline{
                 ls -ltr
                 echo "========ls -ltr========"
                 ls -ld 
+                echo "========ls -ltr========"
+                pwd
                 df -h
                 '''
 
