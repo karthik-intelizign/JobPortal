@@ -64,7 +64,7 @@ pipeline{
                     withCredentials([usernamePassword(credentialsId: 'DOCKER_HUB', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')])
                     {
                         sh "docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
-                        sh "docker push karthik759/job-portal:latest"
+                        sh "sudo docker push karthik759/job-portal:latest"
                     }
 
                 }
