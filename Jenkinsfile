@@ -44,7 +44,7 @@ pipeline{
                 echo "========building docker image==========="
                 sh '''
                    cd JobPortal
-                   sudo docker build -t karthik759/job-portal:latest .
+                   docker build -t karthik759/job-portal:latest .
 
                 '''
             }
@@ -63,8 +63,8 @@ pipeline{
                 script {
                     withCredentials([usernamePassword(credentialsId: 'DOCKER_HUB', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')])
                     {
-                        sh "sudo docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
-                        sh "sudo docker push karthik759/job-portal:latest"
+                        sh "docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
+                        sh "docker push karthik759/job-portal:latest"
                     }
 
                 }
@@ -83,7 +83,7 @@ pipeline{
             steps{
                 echo "========executing docker image==========="
                 sh '''
-                   sudo docker run -p 8000:8000 job-portal
+                   docker run -p 8000:8000 karthik759/job-portal:latest
                    sleep 20
                    echo "============Final Out======================="
                    curl http://localhost:8000/polls/
